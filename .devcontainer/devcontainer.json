@@ -28,7 +28,7 @@
 	// "forwardPorts": [5000, 5001],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "dotnet restore",
+	"postCreateCommand": "./postCreateCommand.sh",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
