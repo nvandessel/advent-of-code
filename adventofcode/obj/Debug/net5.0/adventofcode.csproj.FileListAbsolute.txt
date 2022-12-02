@@ -1,0 +1,16 @@
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode.deps.json
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode.runtimeconfig.json
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode.runtimeconfig.dev.json
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode.dll
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/ref/adventofcode.dll
+/workspaces/advent-of-code/adventofcode/bin/Debug/net5.0/adventofcode.pdb
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.csproj.AssemblyReference.cache
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.GeneratedMSBuildEditorConfig.editorconfig
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.AssemblyInfoInputs.cache
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.AssemblyInfo.cs
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.csproj.CoreCompileInputs.cache
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.dll
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/ref/adventofcode.dll
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.pdb
+/workspaces/advent-of-code/adventofcode/obj/Debug/net5.0/adventofcode.genruntimeconfig.cache
