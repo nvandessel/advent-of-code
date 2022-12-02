@@ -1,4 +1,5 @@
 echo "Restoring dotnet configuration"
+cd adventofcode
 dotnet restore
 
 echo "Setting up tabnine_config"
