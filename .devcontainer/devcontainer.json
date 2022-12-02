@@ -16,7 +16,9 @@
 	},
 
 	"extensions": [
-		"ms-dotnettools.csharp"
+		"ms-dotnettools.csharp",
+		"visualstudioexptteam.vscodeintellicode",
+		"ms-azuretools.vscode-docker"
 	],
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
