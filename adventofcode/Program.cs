@@ -1,4 +1,5 @@
 ﻿using System;
+using adventofcode.Core;
 
 namespace adventofcode
 {
@@ -6,7 +7,12 @@ namespace adventofcode
     {
         static void Main(string[] args)
         {
-            Y2022.D01.Solution.Solve();
+            var solutions = SolutionFinder.FindSolutions();
+            foreach (var solution in solutions)
+            {
+                var instance = (Solution)Activator.CreateInstance(solution);
+                instance.Solve();
+            }
         }
     }
 }
