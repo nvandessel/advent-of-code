@@ -17,7 +17,7 @@
 
 	"extensions": [
 		"ms-dotnettools.csharp",
-		"visualstudioexptteam.vscodeintellicode",
+		"tabnine.tabnine-vscode",
 		"ms-azuretools.vscode-docker"
 	],
 
