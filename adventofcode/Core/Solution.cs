@@ -14,7 +14,7 @@ public abstract class Solution : ISolution
     protected virtual string GetInput()
     {
         var result = "";
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), "adventofcode", Year, Day, InputFileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), Year, Day, InputFileName);
         using (var stream = File.OpenText(filePath))
         {
             result = stream.ReadToEnd();
