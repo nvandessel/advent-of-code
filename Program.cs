@@ -1,25 +1,40 @@
 ﻿using System;
+using System.CommandLine;
+using System.CommandLine.NamingConventionBinder;
 using adventofcode.Core;
 
 namespace adventofcode
 {
     class Program
     {
-        public const string ARGS_ALL = "-a";
-        public const string ARGS_YEAR = "-y";
-        public const string ARGS_DAY = "-d";
-
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
-            if (args == null || args.Length == 0)
+            var rootCommand = new RootCommand("Outputs answers for Advent of Code challenges.");
+
+            var yearOption = new Option<int>(
+                new string[] { "-year", "-y"},
+                "Will output results for all Solutions for the supplied Year.") { IsRequired = true } ;
+            var dayOption = new Option<int>(
+                new string[] { "-day", "-d"},
+                "Will output results for all Solutions for the supplied Day.") { IsRequired = true } ;
+
+            var dayYearCommand = new Command("solve"){
+                dayOption,
+                yearOption
+            };
+            dayYearCommand.SetHandler((day, year) => 
             {
-                //TODO: Send greet message
-                SolveAll();
-            }
-            else 
-            {
-                ExtractArgs(args);
-            }
+                SolveDay(year, day);
+            }, dayOption, yearOption);
+            rootCommand.AddCommand(dayYearCommand);
+
+
+            var allCommand = new Command("all");
+            allCommand.SetHandler(() => SolveAll());
+            rootCommand.AddCommand(allCommand);
+
+
+            return rootCommand.InvokeAsync(args).Result;
         }
 
         private static void SolveAll()
@@ -42,19 +57,18 @@ namespace adventofcode
             }
         }
 
-        private static void SolveYear(int year)
-        {
-            
-        }
-
         private static void SolveDay(int year, int day)
         {
-
-        }
-
-        private static void ExtractArgs(string[] args)
-        {
-            
+            var solutions = SolutionFinder.FindSolutions();
+            foreach (var solution in solutions)
+            {
+                var instance = (Solution)Activator.CreateInstance(solution);
+                if (instance.Year != year || instance.Day != day)
+                {
+                    continue;
+                }
+                instance.Solve();
+            }
         }
     }
 }

@@ -8,8 +8,8 @@ namespace adventofcode.Y2022.D01
     [SolutionAttribute("Calorie Counting")]
     public class CalorieCountingSolution : Solution
     {
-        public override string Year => "2022";
-        public override string Day => "Day01";
+        public override int Year => 2022;
+        public override int Day => 01;
 
         public override void Solve()
         {

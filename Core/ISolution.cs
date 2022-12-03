@@ -2,8 +2,8 @@ namespace adventofcode.Core;
 
 public interface ISolution
 {
-    string Year { get; }
-    string Day { get; }
+    int Year { get; }
+    int Day { get; }
 
     string InputFileName { get; }
 

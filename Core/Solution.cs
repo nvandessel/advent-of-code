@@ -5,8 +5,8 @@ namespace adventofcode.Core;
 
 public abstract class Solution : ISolution
 {
-    public abstract string Year { get; }
-    public abstract string Day { get; }
+    public abstract int Year { get; }
+    public abstract int Day { get; }
     public string InputFileName => "Input.txt";
 
     public abstract void Solve();
@@ -14,7 +14,7 @@ public abstract class Solution : ISolution
     protected virtual string GetInput()
     {
         var result = "";
-        var filePath = Path.Combine(Directory.GetCurrentDirectory(), Year, Day, InputFileName);
+        var filePath = Path.Combine(Directory.GetCurrentDirectory(), Year.ToString(), $"Day{Day.ToString("00")}", InputFileName);
         using (var stream = File.OpenText(filePath))
         {
             result = stream.ReadToEnd();
