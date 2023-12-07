@@ -3,12 +3,11 @@
 This is a C# console application designed to solve Advent of Code challenges. It is intended to help provide an easily extensible way of adding new solutions each year and day as they challenges are posted.
 
 ## Getting Started
-Prerequisites
+### Prerequisites
 
     .NET SDK installed on your machine.
-    Or 
 
-Installation
+### Installation
 
     Clone this repository to your local machine.
     Open a terminal and navigate to the project directory.
@@ -17,7 +16,7 @@ Installation
 
 The application supports two main commands:
 
-**Solve All Challenges:**
+#### Solve All Challenges:
 - To solve all available challenges, use the following command:
 
 ```
@@ -25,11 +24,11 @@ dotnet run all
 ```
 - This will execute the `SolveAll` method, which finds all solutions and outputs their results.
 
-**Solve Specific Challenge:**
+#### Solve Specific Challenge:
 - To solve a specific challenge for a given year and day, use the following command:
 
 ```
-dotnet run solve --year <year> --day <day>
+dotnet run solve -year <year> -day <day>
 ```
 - Replace `<year>` and `<day>` with the desired values.
 - This will execute the `SolveDay` method, which finds and solves the specified challenge.

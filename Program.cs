@@ -1,6 +1,6 @@
 ﻿using System;
 using System.CommandLine;
-using System.CommandLine.NamingConventionBinder;
+using System.IO;
 using adventofcode.Core;
 
 namespace adventofcode
@@ -33,6 +33,7 @@ namespace adventofcode
             allCommand.SetHandler(() => SolveAll());
             rootCommand.AddCommand(allCommand);
 
+            Directory.SetCurrentDirectory(Path.Combine(AppContext.BaseDirectory, "..", "..", ".."));
 
             return rootCommand.InvokeAsync(args).Result;
         }
