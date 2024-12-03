@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using adventofcode.Core;
 
 namespace adventofcode.Y2024.D01
@@ -17,7 +18,7 @@ namespace adventofcode.Y2024.D01
 
             var partOne = GetDistance(lists.left, lists.right);
             OutputAnswer("Part One = " + partOne);
-            
+
             var partTwo = GetSimilarity(lists.left, lists.right);
             OutputAnswer("Part Two = " + partTwo);
         }
@@ -26,12 +27,7 @@ namespace adventofcode.Y2024.D01
         {
             left.Sort();
             right.Sort();
-            var result = 0;
-            for (int i = 0; i < left.Count; i++)
-            {
-                result += Math.Abs(left[i] - right[i]);
-            }
-            return result;
+            return left.Select((t, i) => Math.Abs(t - right[i])).Sum();
         }
 
         private int GetSimilarity(List<int> left, List<int> right)
@@ -39,22 +35,18 @@ namespace adventofcode.Y2024.D01
             var rightCount = new Dictionary<int, int>();
             foreach (var number in right)
             {
-                if(rightCount.ContainsKey(number))
+                if (!rightCount.TryAdd(number, 1))
                 {
-                  rightCount[number]++;
-                }
-                else
-                {
-                  rightCount.Add(number, 1);
+                    rightCount[number]++;
                 }
             }
 
             var result = 0;
             foreach (var number in left)
             {
-                if (rightCount.ContainsKey(number))
+                if (rightCount.TryGetValue(number, out var value))
                 {
-                  result += number * rightCount[number];
+                    result += number * value;
                 }
             }
 
@@ -66,16 +58,17 @@ namespace adventofcode.Y2024.D01
             var lines = input.Split("\n");
             var left = new List<int>();
             var right = new List<int>();
-            
+
             foreach (var line in lines)
             {
-                if (String.IsNullOrEmpty(line))
+                if (string.IsNullOrEmpty(line))
                 {
                     continue;
                 }
+
                 var values = line.Split("   ");
-                left.Add(Int32.Parse(values[0]));
-                right.Add(Int32.Parse(values[1]));
+                left.Add(int.Parse(values[0]));
+                right.Add(int.Parse(values[1]));
             }
 
             return (left, right);
