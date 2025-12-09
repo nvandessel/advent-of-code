@@ -12,9 +12,6 @@ namespace adventofcode.Y2024.D09
         {
             var input = GetInput();
 
-            var c = new ChatGptSolution();
-            c.SolvePartTwo(input);
-
             var disk1 = new Disk(input);
             disk1.SortBySequence();
             OutputAnswer("Part One = " + disk1.CalculateChecksum());
