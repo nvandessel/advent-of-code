@@ -142,7 +142,7 @@ namespace adventofcode
 
             watcher.EnableRaisingEvents = true;
 
-            Console.WriteLine("\nPress Ctrl+C to stop watching...");
+            Console.WriteLine("\nPress 'r' to run with real input, Ctrl+C to stop watching...");
             
             // Keep running until Ctrl+C
             var resetEvent = new ManualResetEvent(false);
@@ -151,9 +151,30 @@ namespace adventofcode
                 e.Cancel = true;
                 resetEvent.Set();
             };
+
+            // Listen for keypresses in a separate thread
+            var keyThread = new Thread(() =>
+            {
+                while (!resetEvent.WaitOne(0))
+                {
+                    if (Console.KeyAvailable)
+                    {
+                        var key = Console.ReadKey(true);
+                        if (key.KeyChar == 'r' || key.KeyChar == 'R')
+                        {
+                            Console.WriteLine("\n=== Running with REAL input ===\n");
+                            RunRealInput(year, day);
+                            Console.WriteLine("\nPress 'r' to run with real input, Ctrl+C to stop watching...");
+                        }
+                    }
+                    Thread.Sleep(100);
+                }
+            });
+            keyThread.Start();
             
             resetEvent.WaitOne();
             debounceTimer?.Dispose();
+            keyThread.Join(1000);
         }
 
         private static void RunSampleTests(int year, int day)
@@ -182,6 +203,33 @@ namespace adventofcode
             catch (Exception ex)
             {
                 Console.WriteLine($"Error running tests: {ex.Message}");
+            }
+        }
+
+        private static void RunRealInput(int year, int day)
+        {
+            // Run dotnet run solve as a subprocess to rebuild and get fresh assembly
+            var runProcess = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "dotnet",
+                    Arguments = $"run solve -y {year} -d {day}",
+                    RedirectStandardOutput = false,
+                    RedirectStandardError = false,
+                    UseShellExecute = false,
+                    CreateNoWindow = false
+                }
+            };
+
+            try
+            {
+                runProcess.Start();
+                runProcess.WaitForExit();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error running real input: {ex.Message}");
             }
         }
 
