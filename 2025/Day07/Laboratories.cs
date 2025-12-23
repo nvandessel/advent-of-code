@@ -1,4 +1,3 @@
-using System;
 using adventofcode.Core;
 
 namespace adventofcode.Y2025.D07
@@ -12,12 +11,11 @@ namespace adventofcode.Y2025.D07
         public override SolutionResult Execute(string input)
         {
             var manifold = new Manifold(input);
-            manifold.ProcessBeams();
             
             return new SolutionResult
             {
-                Part1 = manifold.TimesSplit.ToString(),
-                Part2 = manifold.CountTimelines().ToString() 
+                Part1 = manifold.CountSplits().ToString(),
+                Part2 = manifold.CountTimelines().ToString()
             };
         }
     }
